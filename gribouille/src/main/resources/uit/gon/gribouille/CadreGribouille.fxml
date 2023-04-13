@@ -70,7 +70,7 @@
       </MenuBar>
    </top>
    <bottom>
-      <GridPane prefHeight="75.0" prefWidth="668.0" BorderPane.alignment="CENTER">
+      <GridPane alignment="CENTER" prefHeight="20.0" prefWidth="668.0" BorderPane.alignment="BOTTOM_CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -82,34 +82,40 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="x : " />
-                  <Label text="Label" />
+                  <Label alignment="BOTTOM_CENTER" prefHeight="40.0" prefWidth="15.0" text="x : " />
+                  <Label alignment="BOTTOM_CENTER" prefHeight="36.0" prefWidth="28.0" text="Label" />
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <Label text="y : " />
-                  <Label text="Label" />
+                  <Label alignment="BOTTOM_CENTER" prefHeight="40.0" prefWidth="15.0" text="y : " />
+                  <Label alignment="BOTTOM_CENTER" prefHeight="36.0" prefWidth="28.0" text="Label" />
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
-                  <Label text="Epaisseur : " />
-                  <Label text="Label" />
+                  <Label alignment="BOTTOM_CENTER" prefHeight="29.0" prefWidth="59.0" text="Epaisseur : " />
+                  <Label alignment="BOTTOM_CENTER" prefHeight="38.0" prefWidth="28.0" text="Label" />
                </children>
             </HBox>
-            <Label text="Outil" GridPane.columnIndex="3" />
-            <Label text="Couleur" GridPane.columnIndex="4" />
+            <Label alignment="BOTTOM_CENTER" prefHeight="32.0" prefWidth="26.0" text="Outil" GridPane.columnIndex="3">
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin></Label>
+            <Label alignment="BOTTOM_CENTER" prefHeight="44.0" prefWidth="42.0" text="Couleur" GridPane.columnIndex="4">
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin></Label>
          </children>
       </GridPane>
    </bottom>
    <right>
-      <VBox prefHeight="753.0" prefWidth="118.0" style="-fx-background-color: lightgray;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="672.0" prefWidth="118.0" style="-fx-background-color: lightgray;" BorderPane.alignment="CENTER">
          <children>
-            <ColorPicker />
-            <TilePane prefHeight="436.0" prefWidth="122.0">
+            <ColorPicker prefWidth="118.0" />
+            <TilePane prefHeight="256.0" prefWidth="118.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <TilePane.margin>
@@ -117,11 +123,6 @@
                      </TilePane.margin>
                   </Rectangle>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff3f" height="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
-                     <TilePane.margin>
-                        <Insets left="5.0" top="5.0" />
-                     </TilePane.margin>
-                  </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4400ff" height="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <TilePane.margin>
                         <Insets left="5.0" top="5.0" />
                      </TilePane.margin>
@@ -167,7 +168,15 @@
                         <Insets left="5.0" top="5.0" />
                      </TilePane.margin>
                   </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4400ff" height="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
+                     <TilePane.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </TilePane.margin>
+                  </Rectangle>
                </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </TilePane>
          </children>
       </VBox>
