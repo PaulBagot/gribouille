@@ -32,6 +32,7 @@ public class GrilleController implements Initializable {
   private @FXML GridPane grille;
   private @FXML HBox statut;
   private @FXML Label joueur;
+  private @FXML MenusController menusController;
 
   private Label[][] contenu = new Label[3][3];
 
@@ -52,6 +53,7 @@ public class GrilleController implements Initializable {
         label.setFont(Font.font(24));
       }
     joueur.textProperty().bind(modele.texteJoueur);
+    menusController.setParams(modele, table);
   }
 
   public void joueCase(int lg, int col) {
@@ -77,29 +79,6 @@ public class GrilleController implements Initializable {
 		  table.ajouteVictoire(textInputDialog.getResult());
 	  }
 	  table.ajouteNulle();
-	  this.onMenuTable(null);
-  }
-
-  @FXML
-  public void onMenuNouvelle(ActionEvent evt) {
-    modele.nouvellePartie();
-  }
-  
-  @FXML
-  public void onMenuTable(ActionEvent evt) {
-	  try {
-		  FXMLLoader fxmlLoader = new FXMLLoader(Morpion.class.getResource("table.fxml"));
-		  Parent root = fxmlLoader.load();
-		  TableController tc = fxmlLoader.getController();
-		  tc.setScores(table);
-		  grille.getScene().setRoot(root);
-	  } catch (IOException e) {
-		  e.printStackTrace();
-	  }
-  }
-
-  @FXML
-  public void onMenuQuitter(ActionEvent evt) {
-    Platform.exit();
+	  menusController.onMenuTable(null);
   }
 }
