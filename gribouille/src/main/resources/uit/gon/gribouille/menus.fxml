@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+
+<MenuBar  xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" prefHeight="25.0" prefWidth="484.0"
+	BorderPane.alignment="CENTER" fx:controller="uit.gon.gribouille.controleurs.MenusControleur">
+	<menus>
+		<Menu mnemonicParsing="false" text="Dessin">
+			<items>
+				<MenuItem mnemonicParsing="false" text="Charger" />
+				<MenuItem mnemonicParsing="false" text="Sauvegarder" />
+				<MenuItem mnemonicParsing="false" text="Exporter" />
+				<SeparatorMenuItem mnemonicParsing="false" />
+				<MenuItem onAction="#onQuitte" mnemonicParsing="false"
+					text="Quitter" />
+			</items>
+		</Menu>
+		<Menu mnemonicParsing="false" text="Outils">
+			<items>
+				<Menu mnemonicParsing="false" text="Epaisseur">
+					<items>
+						<RadioMenuItem mnemonicParsing="false" text="1">
+							<toggleGroup>
+								<ToggleGroup fx:id="epaisseur" />
+							</toggleGroup>
+						</RadioMenuItem>
+						<RadioMenuItem mnemonicParsing="false" text="2"
+							toggleGroup="$epaisseur" />
+						<RadioMenuItem mnemonicParsing="false" text="3"
+							toggleGroup="$epaisseur" />
+						<RadioMenuItem mnemonicParsing="false" text="4"
+							toggleGroup="$epaisseur" />
+						<RadioMenuItem mnemonicParsing="false" text="5"
+							toggleGroup="$epaisseur" />
+						<RadioMenuItem mnemonicParsing="false" text="6"
+							toggleGroup="$epaisseur" />
+						<RadioMenuItem mnemonicParsing="false" text="7"
+							toggleGroup="$epaisseur" />
+						<RadioMenuItem mnemonicParsing="false" text="8" />
+						<RadioMenuItem mnemonicParsing="false" text="9"
+							toggleGroup="$epaisseur" />
+					</items>
+				</Menu>
+				<RadioMenuItem mnemonicParsing="false" text="Crayon">
+					<toggleGroup>
+						<ToggleGroup fx:id="forme" />
+					</toggleGroup>
+				</RadioMenuItem>
+				<RadioMenuItem mnemonicParsing="false" text="Etoile"
+					toggleGroup="$forme" />
+			</items>
+		</Menu>
+		<Menu mnemonicParsing="false" text="Aide">
+			<items>
+				<MenuItem mnemonicParsing="false" text="A propos" />
+			</items>
+		</Menu>
+	</menus>
+</MenuBar>
