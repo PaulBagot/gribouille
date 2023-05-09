@@ -15,6 +15,8 @@ public class StatutControleur {
 	public Label labelEpaisseur;
 	@FXML
 	public Label labelCouleur;
+	@FXML
+	public Label labelOutil;
 
 	private Controleur controller;
 

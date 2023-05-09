@@ -42,7 +42,7 @@
 					<items>
 						<RadioMenuItem mnemonicParsing="false" text="1">
 							<toggleGroup>
-								<ToggleGroup fx:id="epaisseur" />
+								<ToggleGroup fx:id="epaisseurGroupe" />
 							</toggleGroup>
 						</RadioMenuItem>
 						<RadioMenuItem mnemonicParsing="false" text="2"
@@ -62,13 +62,13 @@
 							toggleGroup="$epaisseur" />
 					</items>
 				</Menu>
-				<RadioMenuItem mnemonicParsing="false" text="Crayon">
+				<RadioMenuItem fx:id="crayon" mnemonicParsing="false" text="Crayon">
 					<toggleGroup>
-						<ToggleGroup fx:id="forme" />
+						<ToggleGroup fx:id="formeGroupe" />
 					</toggleGroup>
 				</RadioMenuItem>
-				<RadioMenuItem mnemonicParsing="false" text="Etoile"
-					toggleGroup="$forme" />
+				<RadioMenuItem fx:id="etoile" mnemonicParsing="false" text="Etoile"
+					toggleGroup="$formeGroupe" />
 			</items>
 		</Menu>
 		<Menu mnemonicParsing="false" text="Aide">

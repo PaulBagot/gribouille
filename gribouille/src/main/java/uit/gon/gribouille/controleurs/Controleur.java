@@ -24,6 +24,7 @@ public class Controleur implements Initializable{
 	public final SimpleDoubleProperty prevY = new SimpleDoubleProperty();
 	public final SimpleIntegerProperty epaisseur = new SimpleIntegerProperty();
 	public final SimpleObjectProperty<Color> couleur = new SimpleObjectProperty<Color>(Color.BLACK);
+	public Outil outil = new OutilCrayon(this);
 	public Trace trace;
 	
 	public @FXML MenusControleur menusController;
@@ -45,31 +46,31 @@ public class Controleur implements Initializable{
 		statutController.labelCouleur.textProperty().bind(couleur.asString());
 		
 		ChangeListener<Number> gestionnaire = new ChangeListener<Number>() {
-			
 			@Override
 			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-				if(trace != null) dessin.addFigure(trace);
-				for(Figure fig : dessin.getFigures()) {
-					for(int i = 1; i < fig.getPoints().size(); i++) {
-						dessinsController.canvas.getGraphicsContext2D().strokeLine(fig.getPoints().get(i-1).getX(), fig.getPoints().get(i-1).getY(), fig.getPoints().get(i).getX(), fig.getPoints().get(i).getY());
-					}
-				}
-				
+				dessine();
 			}
-			
 		};
 		dessinsController.canvas.heightProperty().addListener(gestionnaire);
 		dessinsController.canvas.widthProperty().addListener(gestionnaire);
 	} 
 	
+	public void dessine() {
+		if(trace != null) dessin.addFigure(trace);
+		for(Figure fig : dessin.getFigures()) {
+			for(int i = 1; i < fig.getPoints().size(); i++) {
+				dessinsController.canvas.getGraphicsContext2D().strokeLine(fig.getPoints().get(i-1).getX(), fig.getPoints().get(i-1).getY(), fig.getPoints().get(i).getX(), fig.getPoints().get(i).getY());
+			}
+		}
+	}
+
 	public boolean onQuitter() {
 		return Dialogues.confirmation();
 	}
 
 	@FXML
 	public void onMouseDragged(MouseEvent event) {
-		dessinsController.canvas.getGraphicsContext2D().strokeLine(prevX.getValue(), prevY.getValue(), event.getX(), event.getY());
-		trace.addPoint(event.getX(), event.getY());
+		outil.onMouseDrag(event);
 		prevX.setValue(event.getX()); 
 		prevY.setValue(event.getY());
 	}
@@ -78,12 +79,7 @@ public class Controleur implements Initializable{
 	public void onMousePressed(MouseEvent event) {
 		prevX.setValue(event.getX()); 
 		prevY.setValue(event.getY());
-		if(trace != null) {
-			if(trace.getPoints().size() > 1) {
-				dessin.addFigure(trace);
-			}
-		}
-		trace = new Trace(5, "noir", prevX.getValue(), prevY.getValue());
+		outil.onMousePress(event);
 	}
 	
 	@FXML
@@ -94,6 +90,16 @@ public class Controleur implements Initializable{
 	
 	public void setDessin(Dessin _dessin) {
 		dessin = _dessin;
+	}
+
+	public void onCrayon() {
+		outil = new OutilEtoile(this);
+		statutController.labelOutil.setText("Etoile");
+	}
+
+	public void onEtoile() {
+		outil = new OutilCrayon(this);
+		statutController.labelOutil.setText("Crayon");
 	}
 	
 }
