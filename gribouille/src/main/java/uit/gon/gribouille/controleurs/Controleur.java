@@ -24,7 +24,7 @@ public class Controleur implements Initializable{
 	public final SimpleDoubleProperty prevY = new SimpleDoubleProperty();
 	public final SimpleIntegerProperty epaisseur = new SimpleIntegerProperty();
 	public final SimpleObjectProperty<Color> couleur = new SimpleObjectProperty<Color>(Color.BLACK);
-	private Trace trace;
+	public Trace trace;
 	
 	public @FXML MenusControleur menusController;
 	public @FXML CouleursControleur couleursController;
