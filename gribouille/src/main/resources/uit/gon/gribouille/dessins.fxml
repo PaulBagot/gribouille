@@ -23,17 +23,11 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 
-<BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uit.gon.gribouille.controleurs.Controleur">
-	<top>
-		<fx:include source="menus.fxml" fx:id="menus"/> 
-	</top>
-	<bottom>
-		<fx:include source="statut.fxml" fx:id="statut"/> 
-	</bottom>
-	<right>
-		<fx:include source="couleurs.fxml" fx:id="couleurs"/> 
-	</right>
-	<center>
-		<fx:include source="dessins.fxml" fx:id="dessins"/>
-	</center>
-</BorderPane>
+
+<Pane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:id="pane" prefHeight="750.0" prefWidth="668.0"
+	BorderPane.alignment="CENTER" fx:controller="uit.gon.gribouille.controleurs.DessinControleur">
+	<children>
+		<Canvas fx:id="canvas" onMouseMoved="#onMouseMoved"
+			onMouseDragged="#onMouseDragged" onMousePressed="#onMousePressed" />
+	</children>
+</Pane>

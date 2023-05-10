@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import uit.gon.gribouille.controleurs.Controleur;
 import uit.gon.gribouille.modele.Dessin;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
@@ -26,8 +27,8 @@ public class App extends Application {
     	stage.titleProperty().bind(dessin.nomDuFichierProperty());
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("CadreGribouille.fxml"));
         scene = new Scene(fxmlLoader.load(), 640, 480);
-        GribouilleController gribouilleController = fxmlLoader.getController();
-        gribouilleController.setDessin(dessin);
+        Controleur controleur = fxmlLoader.getController();
+        controleur.setDessin(dessin);
         
         stage.setScene(scene);
         stage.setMinHeight(scene.getHeight());
