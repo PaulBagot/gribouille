@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="CENTER" prefHeight="20.0" prefWidth="668.0" BorderPane.alignment="BOTTOM_CENTER" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uit.gon.gribouille.controleurs.StatutControleur">
+<GridPane alignment="CENTER" prefHeight="20.0" prefWidth="668.0" BorderPane.alignment="BOTTOM_CENTER" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uit.gon.gribouille.controleurs.StatutControleur">
 			<columnConstraints>
 				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
 				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -38,7 +38,7 @@
 						<Label fx:id="labelEpaisseur" alignment="BOTTOM_CENTER" prefHeight="38.0" prefWidth="28.0" />
 					</children>
 				</HBox>
-				<Label fx:id="labelOutil" alignment="BOTTOM_CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="87.0" text="" GridPane.columnIndex="3">
+				<Label fx:id="labelOutil" alignment="BOTTOM_CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="87.0" text="Crayon" GridPane.columnIndex="3">
 					<GridPane.margin>
 						<Insets left="50.0" />
 					</GridPane.margin>

@@ -33,10 +33,10 @@ public class MenusControleur implements Initializable{
 
 			@Override
 			public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
-				if(newValue instanceof OutilEtoile) {
+				if(controller.outil instanceof OutilCrayon) {
 					controller.onCrayon();
 				} else {
-					controller.onEtoile();
+					controller.onEtoile();;
 				}
 					
 			}

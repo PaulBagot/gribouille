@@ -1,6 +1,7 @@
 package uit.gon.gribouille.controleurs;
 
 import java.net.URL;
+
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -8,8 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import uit.gon.gribouille.modele.Dessin;
-import uit.gon.gribouille.modele.Trace;
 
 public class DessinControleur implements Initializable{
 	

@@ -11,11 +11,6 @@ public class OutilCrayon extends Outil{
 
 	@Override
 	public void onMousePress(MouseEvent event) {
-		/*if(controleur.trace != null) {
-			if(controleur.trace.getPoints().size() > 1) {
-				controleur.dessin.addFigure(controleur.trace);
-			}
-		}*/
 		controleur.trace = new Trace(5, "noir", controleur.prevX.getValue(), controleur.prevY.getValue());
 		controleur.dessin.addFigure(controleur.trace);
 	}

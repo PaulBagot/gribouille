@@ -13,8 +13,6 @@ public class CouleursControleur {
 	
 	private Controleur controller;
 	
-	
-	
 	public void setController(Controleur controller) {
 		this.controller = controller;
 	}
