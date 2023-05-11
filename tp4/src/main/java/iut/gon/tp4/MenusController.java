@@ -23,7 +23,7 @@ public class MenusController {
 	  public void onMenuTable(ActionEvent evt) {
 		  try {
 			  FXMLLoader fxmlLoader = new FXMLLoader(Morpion.class.getResource("table.fxml"));
-			  Morpion.setRoot(fxmlLoader);
+			  Morpion.setRoot(fxmlLoader.load());
 			  TableController tc = fxmlLoader.getController();
 			  tc.setScores(table);
 		  } catch (IOException e) {

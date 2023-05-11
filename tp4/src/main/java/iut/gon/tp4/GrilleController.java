@@ -77,8 +77,9 @@ public class GrilleController implements Initializable {
 		  TextInputDialog textInputDialog = new TextInputDialog("quel est le nom du joueur gagnant ?\n");
 		  textInputDialog.showAndWait();
 		  table.ajouteVictoire(textInputDialog.getResult());
+	  } else {
+		  table.ajouteNulle();
+		  menusController.onMenuTable(null);
 	  }
-	  table.ajouteNulle();
-	  menusController.onMenuTable(null);
   }
 }
