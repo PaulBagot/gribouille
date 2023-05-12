@@ -26,13 +26,13 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Diffculté">
                      <items>
-                        <RadioMenuItem mnemonicParsing="false" text="Facile">
+                        <RadioMenuItem mnemonicParsing="false" text="Facile" fx:id="facile" userData="10;10;10">
                            <toggleGroup>
                               <ToggleGroup fx:id="difficulte" />
                            </toggleGroup>
                         </RadioMenuItem>
-                        <RadioMenuItem mnemonicParsing="false" text="Normal" toggleGroup="$difficulte" />
-                        <RadioMenuItem mnemonicParsing="false" text="Difficile" toggleGroup="$difficulte" />
+                        <RadioMenuItem mnemonicParsing="false" text="Normal" toggleGroup="$difficulte" userData="20;20;50"/>
+                        <RadioMenuItem mnemonicParsing="false" text="Difficile" toggleGroup="$difficulte" userData="30;20;100" />
                      </items>
                 </Menu>
               </menus>
@@ -56,9 +56,6 @@
    </top>
    <center>
       <GridPane fx:id="grille" gridLinesVisible="true" BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
       </GridPane>
    </center>
 </BorderPane>

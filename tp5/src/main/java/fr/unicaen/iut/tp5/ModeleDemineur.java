@@ -139,7 +139,7 @@ public class ModeleDemineur {
       nbInconnues.set(nbInconnues.get()-1);
       if (mines[y][x])
         perdu.set(true);
-      else if (autoZero.get() && textes[y][x] == 0) {
+      else if (autoZero.get() || textes[y][x] == 0) {
         for (int dy=-1; dy<=1; ++dy) {
           int ny = y + dy;
           if (ny >=0 && ny <textes.length)
