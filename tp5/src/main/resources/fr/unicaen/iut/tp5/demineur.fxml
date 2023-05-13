@@ -21,7 +21,7 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Jeu">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Quitter" />
+                    <MenuItem mnemonicParsing="false" text="Quitter" onAction="#onQuitter"/>
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Diffculté">
