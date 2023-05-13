@@ -12,12 +12,13 @@ public class OutilEtoile extends Outil{
 
 	@Override
 	public void onMousePress(MouseEvent event) {
-		controleur.trace = new Trace(5, "noir", controleur.prevX.getValue(), controleur.prevY.getValue());
+		controleur.trace = new Trace(controleur.epaisseur.getValue(), "noir", controleur.prevX.getValue(), controleur.prevY.getValue());
 		controleur.dessin.addFigure(controleur.trace);
 	}
 
 	@Override
 	public void onMouseDrag(MouseEvent event) {
+		controleur.dessinsController.setEpaisseur();
 		Etoile etoile = new Etoile(5, "noir", controleur.prevX.getValue(), controleur.prevY.getValue()); 	
 	}
 

@@ -45,18 +45,13 @@ public class Controleur implements Initializable{
 		statutController.labelEpaisseur.textProperty().bind(epaisseur.asString());
 		statutController.labelCouleur.textProperty().bind(couleur.asString());
 		
-		ChangeListener<Number> gestionnaire = new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-				dessine();
-			}
-		};
-		dessinsController.canvas.heightProperty().addListener(gestionnaire);
-		dessinsController.canvas.widthProperty().addListener(gestionnaire);
+		dessinsController.canvas.heightProperty().addListener(changeListener -> dessine());
+		dessinsController.canvas.widthProperty().addListener(changeListener -> dessine());
 	} 
 	
 	public void dessine() {
 		if(trace != null) dessin.addFigure(trace);
+		dessinsController.setEpaisseur();
 		for(Figure fig : dessin.getFigures()) {
 			for(int i = 1; i < fig.getPoints().size(); i++) {
 				dessinsController.canvas.getGraphicsContext2D().strokeLine(fig.getPoints().get(i-1).getX(), fig.getPoints().get(i-1).getY(), fig.getPoints().get(i).getX(), fig.getPoints().get(i).getY());
@@ -100,6 +95,11 @@ public class Controleur implements Initializable{
 	public void onEtoile() {
 		outil = new OutilCrayon(this);
 		statutController.labelOutil.setText("Crayon");
+	}
+
+	public void setEpaisseur(int _epaisseur) {
+		epaisseur.set(_epaisseur);
+		System.out.println(epaisseur);
 	}
 	
 }

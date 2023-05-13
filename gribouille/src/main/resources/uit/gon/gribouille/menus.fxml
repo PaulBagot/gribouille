@@ -28,17 +28,14 @@
 								<ToggleGroup fx:id="epaisseurGroupe" />
 							</toggleGroup>
 						</RadioMenuItem>
-						<RadioMenuItem mnemonicParsing="false" text="2">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="epaisseur" />
-                     </toggleGroup></RadioMenuItem>
-						<RadioMenuItem mnemonicParsing="false" text="3" toggleGroup="$epaisseur" />
-						<RadioMenuItem mnemonicParsing="false" text="4" toggleGroup="$epaisseur" />
-						<RadioMenuItem mnemonicParsing="false" text="5" toggleGroup="$epaisseur" />
-						<RadioMenuItem mnemonicParsing="false" text="6" toggleGroup="$epaisseur" />
-						<RadioMenuItem mnemonicParsing="false" text="7" toggleGroup="$epaisseur" />
-						<RadioMenuItem mnemonicParsing="false" text="8" />
-						<RadioMenuItem mnemonicParsing="false" text="9" toggleGroup="$epaisseur" />
+						<RadioMenuItem mnemonicParsing="false" text="2" toggleGroup="$epaisseurGroupe" />
+						<RadioMenuItem mnemonicParsing="false" text="3" toggleGroup="$epaisseurGroupe" />
+						<RadioMenuItem mnemonicParsing="false" text="4" toggleGroup="$epaisseurGroupe" />
+						<RadioMenuItem mnemonicParsing="false" text="5" toggleGroup="$epaisseurGroupe" />
+						<RadioMenuItem mnemonicParsing="false" text="6" toggleGroup="$epaisseurGroupe" />
+						<RadioMenuItem mnemonicParsing="false" text="7" toggleGroup="$epaisseurGroupe" />
+						<RadioMenuItem mnemonicParsing="false" text="8" toggleGroup="$epaisseurGroupe" />
+						<RadioMenuItem mnemonicParsing="false" text="9" toggleGroup="$epaisseurGroupe" />
 					</items>
 				</Menu>
 				<RadioMenuItem fx:id="crayon" mnemonicParsing="false" selected="true" text="Crayon">
