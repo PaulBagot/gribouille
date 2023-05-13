@@ -109,4 +109,19 @@ public class Controleur implements Initializable{
 	public void setCouleur(Paint paint) {
 		couleur.set((Color) paint);
 	}
+
+	public void onKeyPressed(String text) {
+		switch(text) {
+			case "1" : setEpaisseur(1); break;
+			case "2" : setEpaisseur(2); break;
+			case "3" : setEpaisseur(3); break;
+			case "4" : setEpaisseur(4); break;
+			case "5" : setEpaisseur(5); break;
+			case "6" : setEpaisseur(6); break;
+			case "7" : setEpaisseur(7); break;
+			case "8" : setEpaisseur(8); break;
+			case "9" : setEpaisseur(9); break;
+			default: return;
+		}
+	}
 }
