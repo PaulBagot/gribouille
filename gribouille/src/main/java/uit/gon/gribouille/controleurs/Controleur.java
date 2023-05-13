@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import uit.gon.gribouille.Dialogues;
 import uit.gon.gribouille.modele.Dessin;
 import uit.gon.gribouille.modele.Figure;
@@ -22,7 +23,7 @@ public class Controleur implements Initializable{
 	public Dessin dessin;
 	public final SimpleDoubleProperty prevX = new SimpleDoubleProperty();
 	public final SimpleDoubleProperty prevY = new SimpleDoubleProperty();
-	public final SimpleIntegerProperty epaisseur = new SimpleIntegerProperty();
+	public final SimpleIntegerProperty epaisseur = new SimpleIntegerProperty(1);
 	public final SimpleObjectProperty<Color> couleur = new SimpleObjectProperty<Color>(Color.BLACK);
 	public Outil outil = new OutilCrayon(this);
 	public Trace trace;
@@ -45,23 +46,22 @@ public class Controleur implements Initializable{
 		statutController.labelEpaisseur.textProperty().bind(epaisseur.asString());
 		statutController.labelCouleur.textProperty().bind(couleur.asString());
 		
-		ChangeListener<Number> gestionnaire = new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-				dessine();
-			}
-		};
-		dessinsController.canvas.heightProperty().addListener(gestionnaire);
-		dessinsController.canvas.widthProperty().addListener(gestionnaire);
+		dessinsController.canvas.heightProperty().addListener(changeListener -> dessine());
+		dessinsController.canvas.widthProperty().addListener(changeListener -> dessine());
 	} 
 	
 	public void dessine() {
 		if(trace != null) dessin.addFigure(trace);
 		for(Figure fig : dessin.getFigures()) {
+			dessinsController.canvas.getGraphicsContext2D().setLineWidth(fig.getEpaisseur());
+			dessinsController.canvas.getGraphicsContext2D().setStroke(Color.valueOf(fig.getCouleur()));
+			
 			for(int i = 1; i < fig.getPoints().size(); i++) {
 				dessinsController.canvas.getGraphicsContext2D().strokeLine(fig.getPoints().get(i-1).getX(), fig.getPoints().get(i-1).getY(), fig.getPoints().get(i).getX(), fig.getPoints().get(i).getY());
 			}
 		}
+		dessinsController.setEpaisseur();
+		dessinsController.setCouleur();
 	}
 
 	public boolean onQuitter() {
@@ -101,5 +101,27 @@ public class Controleur implements Initializable{
 		outil = new OutilCrayon(this);
 		statutController.labelOutil.setText("Crayon");
 	}
+
+	public void setEpaisseur(int _epaisseur) {
+		epaisseur.set(_epaisseur);
+	}
 	
+	public void setCouleur(Paint paint) {
+		couleur.set((Color) paint);
+	}
+
+	public void onKeyPressed(String text) {
+		switch(text) {
+			case "1" : setEpaisseur(1); break;
+			case "2" : setEpaisseur(2); break;
+			case "3" : setEpaisseur(3); break;
+			case "4" : setEpaisseur(4); break;
+			case "5" : setEpaisseur(5); break;
+			case "6" : setEpaisseur(6); break;
+			case "7" : setEpaisseur(7); break;
+			case "8" : setEpaisseur(8); break;
+			case "9" : setEpaisseur(9); break;
+			default: return;
+		}
+	}
 }

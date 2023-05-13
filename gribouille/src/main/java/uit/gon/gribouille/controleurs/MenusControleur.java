@@ -29,18 +29,17 @@ public class MenusControleur implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		formeGroupe.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-
-			@Override
-			public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
-				if(controller.outil instanceof OutilCrayon) {
-					controller.onCrayon();
-				} else {
-					controller.onEtoile();;
-				}
-					
+		formeGroupe.selectedToggleProperty().addListener(l -> {
+			if(controller.outil instanceof OutilCrayon) {
+				controller.onCrayon();
+			} else {
+				controller.onEtoile();;
 			}
-			
+		});
+		
+		epaisseurGroupe.selectedToggleProperty().addListener(e -> {
+			RadioMenuItem epaisseurToggle = (RadioMenuItem) epaisseurGroupe.getSelectedToggle();
+			controller.setEpaisseur(Integer.parseInt(epaisseurToggle.getText()));
 		});
 	}
 

@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import uit.gon.gribouille.controleurs.Controleur;
 import uit.gon.gribouille.modele.Dessin;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
@@ -38,6 +39,10 @@ public class App extends Application {
         	if(!Dialogues.confirmation()) {
         		e.consume();
         	}
+        });
+        stage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+        	controleur.onKeyPressed(e.getText());
+        	System.out.println(e.getText());
         });
     }
 

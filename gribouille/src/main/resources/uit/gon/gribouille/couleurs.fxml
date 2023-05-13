@@ -21,7 +21,7 @@
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
-<VBox  xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" prefHeight="672.0" prefWidth="118.0" style="-fx-background-color: lightgray;" BorderPane.alignment="CENTER" fx:controller="uit.gon.gribouille.controleurs.CouleursControleur">
+<VBox  fx:id="vBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" prefHeight="672.0" prefWidth="118.0" style="-fx-background-color: lightgray;" BorderPane.alignment="CENTER" fx:controller="uit.gon.gribouille.controleurs.CouleursControleur">
 			<children>
 				<ColorPicker fx:id="colorPicker" prefWidth="118.0" />
 				<TilePane prefHeight="256.0" prefWidth="118.0">
@@ -36,23 +36,7 @@
 								<Insets left="5.0" top="5.0" />
 							</TilePane.margin>
 						</Rectangle>
-						<Rectangle fx:id="rectangles" arcHeight="5.0" arcWidth="5.0" height="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
-							<fill>
-								<LinearGradient endX="1.0" endY="1.0">
-									<stops>
-										<Stop>
-											<color>
-												<Color red="0.5324074029922485" green="0.9376543164253235" blue="1.0" />
-											</color>
-										</Stop>
-										<Stop offset="1.0">
-											<color>
-												<Color red="0.6011817455291748" green="0.8898066878318787" blue="0.9342105388641357" />
-											</color>
-										</Stop>
-									</stops>
-								</LinearGradient>
-							</fill>
+						<Rectangle fx:id="rectangles" arcHeight="5.0" arcWidth="5.0" height="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0" fill="LIGHTBLUE">
 							<TilePane.margin>
 								<Insets left="5.0" top="5.0" />
 							</TilePane.margin>
