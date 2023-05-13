@@ -11,13 +11,14 @@ public class OutilCrayon extends Outil{
 
 	@Override
 	public void onMousePress(MouseEvent event) {
-		controleur.trace = new Trace(controleur.epaisseur.getValue(), "noir", controleur.prevX.getValue(), controleur.prevY.getValue());
+		controleur.trace = new Trace(controleur.epaisseur.getValue(), controleur.couleur.getValue().toString(), controleur.prevX.getValue(), controleur.prevY.getValue());
 		controleur.dessin.addFigure(controleur.trace);
 	}
 
 	@Override
 	public void onMouseDrag(MouseEvent event) {
 		controleur.dessinsController.setEpaisseur();
+		controleur.dessinsController.setCouleur();
 		controleur.dessinsController.canvas.getGraphicsContext2D().strokeLine(controleur.prevX.getValue(), controleur.prevY.getValue(), event.getX(), event.getY());
 		controleur.trace.addPoint(event.getX(), event.getY());
 	}

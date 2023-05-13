@@ -55,4 +55,8 @@ public class DessinControleur implements Initializable{
 	public void setEpaisseur() {
 		canvas.getGraphicsContext2D().setLineWidth(controller.epaisseur.getValue());
 	}
+	
+	public void setCouleur() {
+		canvas.getGraphicsContext2D().setStroke(controller.couleur.getValue());
+	}
 }

@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import uit.gon.gribouille.Dialogues;
 import uit.gon.gribouille.modele.Dessin;
 import uit.gon.gribouille.modele.Figure;
@@ -22,7 +23,7 @@ public class Controleur implements Initializable{
 	public Dessin dessin;
 	public final SimpleDoubleProperty prevX = new SimpleDoubleProperty();
 	public final SimpleDoubleProperty prevY = new SimpleDoubleProperty();
-	public final SimpleIntegerProperty epaisseur = new SimpleIntegerProperty();
+	public final SimpleIntegerProperty epaisseur = new SimpleIntegerProperty(1);
 	public final SimpleObjectProperty<Color> couleur = new SimpleObjectProperty<Color>(Color.BLACK);
 	public Outil outil = new OutilCrayon(this);
 	public Trace trace;
@@ -51,12 +52,16 @@ public class Controleur implements Initializable{
 	
 	public void dessine() {
 		if(trace != null) dessin.addFigure(trace);
-		dessinsController.setEpaisseur();
 		for(Figure fig : dessin.getFigures()) {
+			dessinsController.canvas.getGraphicsContext2D().setLineWidth(fig.getEpaisseur());
+			dessinsController.canvas.getGraphicsContext2D().setStroke(Color.valueOf(fig.getCouleur()));
+			
 			for(int i = 1; i < fig.getPoints().size(); i++) {
 				dessinsController.canvas.getGraphicsContext2D().strokeLine(fig.getPoints().get(i-1).getX(), fig.getPoints().get(i-1).getY(), fig.getPoints().get(i).getX(), fig.getPoints().get(i).getY());
 			}
 		}
+		dessinsController.setEpaisseur();
+		dessinsController.setCouleur();
 	}
 
 	public boolean onQuitter() {
@@ -99,7 +104,9 @@ public class Controleur implements Initializable{
 
 	public void setEpaisseur(int _epaisseur) {
 		epaisseur.set(_epaisseur);
-		System.out.println(epaisseur);
 	}
 	
+	public void setCouleur(Paint paint) {
+		couleur.set((Color) paint);
+	}
 }
