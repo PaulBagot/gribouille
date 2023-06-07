@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import uit.gon.gribouille.controleurs.Controleur;
 import uit.gon.gribouille.modele.Dessin;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
@@ -43,7 +44,7 @@ public class App extends Application {
         });
         
         stage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
-        	controleur.onKeyPressed(e.getText());
+        	controleur.onKeyPressed(e, e.getText());
         });
     }
 

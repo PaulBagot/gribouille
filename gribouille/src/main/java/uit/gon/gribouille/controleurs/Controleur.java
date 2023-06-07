@@ -19,6 +19,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -39,6 +41,7 @@ public class Controleur implements Initializable{
 	public final SimpleObjectProperty<Color> couleur = new SimpleObjectProperty<Color>(Color.BLACK);
 	public Outil outil = new OutilCrayon(this);
 	public Trace trace;
+	public boolean controlKey = false;
 	
 	public @FXML MenusControleur menusController;
 	public @FXML CouleursControleur couleursController;
@@ -133,19 +136,26 @@ public class Controleur implements Initializable{
 		couleur.set((Color) paint);
 	}
 
-	public void onKeyPressed(String text) {
-		switch(text) {
-			case "1" : setEpaisseur(1); break;
-			case "2" : setEpaisseur(2); break;
-			case "3" : setEpaisseur(3); break;
-			case "4" : setEpaisseur(4); break;
-			case "5" : setEpaisseur(5); break;
-			case "6" : setEpaisseur(6); break;
-			case "7" : setEpaisseur(7); break;
-			case "8" : setEpaisseur(8); break;
-			case "9" : setEpaisseur(9); break;
-			default: return;
+	public void onKeyPressed(KeyEvent keyEvent, String key) {
+		switch(key) {
+			case "1" : setEpaisseur(1);
+			case "2" : setEpaisseur(2);
+			case "3" : setEpaisseur(3);
+			case "4" : setEpaisseur(4);
+			case "5" : setEpaisseur(5);
+			case "6" : setEpaisseur(6);
+			case "7" : setEpaisseur(7);
+			case "8" : setEpaisseur(8);
+			case "9" : setEpaisseur(9);
+			case "z" : {
+				if(controlKey)
+					retourArriere();
+				break;
+			}
+			default: controlKey = false;
 		}
+		if(keyEvent.getCode() == KeyCode.CONTROL)
+			controlKey = true;
 	}
 	
 	public boolean sauvegarde(Scene scene) {
@@ -174,5 +184,19 @@ public class Controleur implements Initializable{
 			dessin.charge(file.getAbsolutePath());
 			dessine();
 		}
+	}
+	
+	public void effacer() {
+		dessin.getFigures().clear();
+		trace = null;
+		dessinsController.reinitialiseCanvas();
+	}
+	
+	public void retourArriere() {
+		if(dessin.getFigures().size() != 0)
+			dessin.getFigures().remove(dessin.getFigures().size() - 1);
+		trace = null;
+		dessinsController.reinitialiseCanvas();
+		dessine();
 	}
 }

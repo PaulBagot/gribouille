@@ -49,6 +49,10 @@ public class DessinControleur implements Initializable{
 		controller.onMouseMoved(event);
 	}
 	
+	public void reinitialiseCanvas() {
+		canvas.getGraphicsContext2D().fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+	}
+	
 	public void setController(Controleur _controller) {
 		controller = _controller;
 	}
@@ -59,11 +63,5 @@ public class DessinControleur implements Initializable{
 	
 	public void setCouleur() {
 		canvas.getGraphicsContext2D().setStroke(controller.couleur.getValue());
-	}
-	
-	public void reinitialiseCanvas() {
-		controller.dessin.getFigures().clear();
-		controller.trace = null;
-		canvas.getGraphicsContext2D().fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 	}
 }
