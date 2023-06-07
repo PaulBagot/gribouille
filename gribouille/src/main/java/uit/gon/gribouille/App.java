@@ -38,9 +38,8 @@ public class App extends Application {
         stage.setMinWidth(scene.getWidth());
         stage.show();
         stage.setOnCloseRequest( e -> {
-        	if(!Dialogues.confirmation()) {
+        	if(!controleur.onQuitter())
         		e.consume();
-        	}
         });
         
         stage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {

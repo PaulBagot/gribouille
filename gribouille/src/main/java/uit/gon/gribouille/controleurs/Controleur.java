@@ -16,6 +16,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -74,7 +77,16 @@ public class Controleur implements Initializable{
 	}
 
 	public boolean onQuitter() {
-		return Dialogues.confirmation();
+		if(!dessin.getEstModifie()) return Dialogues.confirmation();
+		Alert a = new Alert(AlertType.CONFIRMATION, "Que voulez-vous faire?");
+		a.setTitle("Confirmation");
+		ButtonType buttonType = ButtonType.YES;
+		a.getButtonTypes().add(buttonType);
+		ButtonType result = a.showAndWait().get();
+		if(result == ButtonType.OK) return true;
+		if(result == ButtonType.YES)
+			return sauvegarde(dessinsController.canvas.getScene());
+		return false;
 	}
 
 	@FXML
@@ -134,7 +146,7 @@ public class Controleur implements Initializable{
 		}
 	}
 	
-	public void sauvegarde(Scene scene) {
+	public boolean sauvegarde(Scene scene) {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Sauvegarder");
 		fileChooser.setInitialFileName("sans nom");
@@ -144,7 +156,9 @@ public class Controleur implements Initializable{
 		if(file != null) {
 			dessin.sauveSous(file.getAbsolutePath());
 			dessin.setNomDuFichier(file.getName());
+			return true;
 		}
+		return false;
 	}
 	
 	public void charge(Scene scene) {
