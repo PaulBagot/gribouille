@@ -1,18 +1,24 @@
 package uit.gon.gribouille.controleurs;
 
+import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.StringBinding;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import uit.gon.gribouille.Dialogues;
 import uit.gon.gribouille.modele.Dessin;
 import uit.gon.gribouille.modele.Figure;
@@ -20,7 +26,7 @@ import uit.gon.gribouille.modele.Trace;
 
 public class Controleur implements Initializable{
 
-	public Dessin dessin;
+	public Dessin dessin = new Dessin();
 	public final SimpleDoubleProperty prevX = new SimpleDoubleProperty();
 	public final SimpleDoubleProperty prevY = new SimpleDoubleProperty();
 	public final SimpleIntegerProperty epaisseur = new SimpleIntegerProperty(1);
@@ -122,6 +128,19 @@ public class Controleur implements Initializable{
 			case "8" : setEpaisseur(8); break;
 			case "9" : setEpaisseur(9); break;
 			default: return;
+		}
+	}
+	
+	public void sauvegarde(Canvas child) {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Sauvegarde");
+		fileChooser.setInitialFileName("sans nom");
+		
+		fileChooser.getExtensionFilters().add((new ExtensionFilter("fichier text", "*.txt")));
+		File file = fileChooser.showSaveDialog(child.getScene().getWindow());
+		if(file != null) {
+			dessin.sauveSous(file.getAbsolutePath());
+			dessin.setNomDuFichier(fileChooser.getInitialFileName());
 		}
 	}
 }

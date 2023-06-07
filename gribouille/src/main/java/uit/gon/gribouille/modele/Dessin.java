@@ -34,7 +34,7 @@ public class Dessin {
   /**
    le fichier du dessin
    */
-  private SimpleObjectProperty<File> fichier;
+  private SimpleObjectProperty<File> fichier = new SimpleObjectProperty<File>();
 
   /**
    Crée un dessin vide sans nom
