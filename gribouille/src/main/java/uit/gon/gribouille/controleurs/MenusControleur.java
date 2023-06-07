@@ -61,6 +61,21 @@ public class MenusControleur implements Initializable{
 		controller.charge(controller.dessinsController.canvas.getScene());
 	}
 	
+	@FXML
+	public void onEffacer(ActionEvent evt) {
+		controller.effacer();
+	}
+	
+	@FXML
+	public void onRetourArriere(ActionEvent evt) {
+		controller.retourArriere();
+	}
+	
+	@FXML
+	public void onExporter(ActionEvent evt) {
+		controller.exporter(controller.dessinsController.canvas.getScene());
+	}
+	
 	public void setController(Controleur controller) {
 		this.controller = controller;
 	}

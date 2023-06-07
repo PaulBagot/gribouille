@@ -3,9 +3,13 @@ package uit.gon.gribouille.controleurs;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -30,11 +34,7 @@ public class CouleursControleur implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		vBox.setOnMouseClicked(e -> {
 			if(e.getTarget() instanceof Rectangle) {
-				if(selectedRectangle != null) {
-					selectedRectangle.setArcWidth(5);
-					selectedRectangle.setArcHeight(5);
-					selectedRectangle.setStrokeWidth(1);
-				}
+				reinitialiseSelectedRectangle();
 				selectedRectangle =  (Rectangle) e.getTarget();
 				selectedRectangle.setArcWidth(10);
 				selectedRectangle.setArcHeight(10);
@@ -42,5 +42,13 @@ public class CouleursControleur implements Initializable{
 				controller.setCouleur(selectedRectangle.getFill());
 			}
 		});
+	}
+	
+	public void reinitialiseSelectedRectangle( ) {
+		if(selectedRectangle != null) {
+			selectedRectangle.setArcWidth(5);
+			selectedRectangle.setArcHeight(5);
+			selectedRectangle.setStrokeWidth(1);
+		}
 	}
 }

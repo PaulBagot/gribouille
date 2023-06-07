@@ -14,7 +14,7 @@
 			<items>
 				<MenuItem mnemonicParsing="false" onAction="#onCharger" text="Charger" />
 				<MenuItem mnemonicParsing="false" onAction="#onSauver" text="Sauvegarder" />
-				<MenuItem mnemonicParsing="false" text="Exporter" />
+				<MenuItem mnemonicParsing="false" onAction="#onExporter" text="Exporter" />
 				<SeparatorMenuItem mnemonicParsing="false" />
 				<MenuItem mnemonicParsing="false" onAction="#onQuitte" text="Quitter" />
 			</items>
@@ -44,6 +44,12 @@
 					</toggleGroup>
 				</RadioMenuItem>
 				<RadioMenuItem fx:id="etoile" mnemonicParsing="false" text="Etoile" toggleGroup="$formeGroupe" />
+			</items>
+		</Menu>
+		<Menu mnemonicParsing="false" text="Canvas">
+			<items>
+				<MenuItem mnemonicParsing="false" onAction="#onEffacer" text="Effacer" />
+				<MenuItem mnemonicParsing="false" onAction="#onRetourArriere" text="Annuler" />
 			</items>
 		</Menu>
 		<Menu mnemonicParsing="false" text="Aide">
