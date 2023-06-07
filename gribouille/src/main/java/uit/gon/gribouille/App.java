@@ -42,9 +42,9 @@ public class App extends Application {
         		e.consume();
         	}
         });
+        
         stage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
         	controleur.onKeyPressed(e.getText());
-        	System.out.println(e.getText());
         });
     }
 

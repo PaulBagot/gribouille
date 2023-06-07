@@ -53,7 +53,12 @@ public class MenusControleur implements Initializable{
 	
 	@FXML
 	public void onSauver(ActionEvent evt) {
-		controller.sauvegarde(controller.dessinsController.canvas);
+		controller.sauvegarde(controller.dessinsController.canvas.getScene());
+	}
+	
+	@FXML
+	public void onCharger(ActionEvent evt) {
+		controller.charge(controller.dessinsController.canvas.getScene());
 	}
 	
 	public void setController(Controleur controller) {

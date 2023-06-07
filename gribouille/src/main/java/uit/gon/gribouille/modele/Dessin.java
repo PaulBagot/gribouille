@@ -25,7 +25,7 @@ public class Dessin {
   /**
    Le nom du fichier. Ou "Sans Nom", si non sauvegardé.
    */
-  private final SimpleStringProperty nomDuFichier = new SimpleStringProperty("Sans Nom");
+  private final SimpleStringProperty nomDuFichier = new SimpleStringProperty("sans nom.canvas");
   /**
    La liste des figures
    */

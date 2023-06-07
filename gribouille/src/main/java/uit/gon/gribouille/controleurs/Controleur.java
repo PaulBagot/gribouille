@@ -14,6 +14,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -133,16 +134,29 @@ public class Controleur implements Initializable{
 		}
 	}
 	
-	public void sauvegarde(Canvas child) {
+	public void sauvegarde(Scene scene) {
 		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Sauvegarde");
+		fileChooser.setTitle("Sauvegarder");
 		fileChooser.setInitialFileName("sans nom");
 		
-		fileChooser.getExtensionFilters().add((new ExtensionFilter("fichier text", "*.txt")));
-		File file = fileChooser.showSaveDialog(child.getScene().getWindow());
+		fileChooser.getExtensionFilters().add(new ExtensionFilter("fichier text", "*.canvas"));
+		File file = fileChooser.showSaveDialog(scene.getWindow());
 		if(file != null) {
 			dessin.sauveSous(file.getAbsolutePath());
-			dessin.setNomDuFichier(fileChooser.getInitialFileName());
+			dessin.setNomDuFichier(file.getName());
+		}
+	}
+	
+	public void charge(Scene scene) {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("charger");
+		fileChooser.getExtensionFilters().add(new ExtensionFilter("fichier text", "*.canvas"));
+		File file = fileChooser.showOpenDialog(scene.getWindow());
+		if(file != null) {
+			dessinsController.reinitialiseCanvas();
+			dessin.setNomDuFichier(file.getName());
+			dessin.charge(file.getAbsolutePath());
+			dessine();
 		}
 	}
 }

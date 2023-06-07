@@ -12,7 +12,7 @@
 	<menus>
 		<Menu mnemonicParsing="false" text="Dessin">
 			<items>
-				<MenuItem mnemonicParsing="false" text="Charger" />
+				<MenuItem mnemonicParsing="false" onAction="#onCharger" text="Charger" />
 				<MenuItem mnemonicParsing="false" onAction="#onSauver" text="Sauvegarder" />
 				<MenuItem mnemonicParsing="false" text="Exporter" />
 				<SeparatorMenuItem mnemonicParsing="false" />
