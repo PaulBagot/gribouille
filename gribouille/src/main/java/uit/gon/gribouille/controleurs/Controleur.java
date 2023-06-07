@@ -78,12 +78,14 @@ public class Controleur implements Initializable{
 
 	public boolean onQuitter() {
 		if(!dessin.getEstModifie()) return Dialogues.confirmation();
-		Alert a = new Alert(AlertType.CONFIRMATION, "Que voulez-vous faire?");
+		Alert a = new Alert(AlertType.CONFIRMATION, "sauvegarder avant de quitter?");
 		a.setTitle("Confirmation");
-		ButtonType buttonType = ButtonType.YES;
-		a.getButtonTypes().add(buttonType);
+		a.getButtonTypes().clear();
+		a.getButtonTypes().add(ButtonType.CANCEL);
+		a.getButtonTypes().add(ButtonType.NO);
+		a.getButtonTypes().add(ButtonType.YES);
 		ButtonType result = a.showAndWait().get();
-		if(result == ButtonType.OK) return true;
+		if(result == ButtonType.NO) return true;
 		if(result == ButtonType.YES)
 			return sauvegarde(dessinsController.canvas.getScene());
 		return false;
