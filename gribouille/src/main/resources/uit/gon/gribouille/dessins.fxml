@@ -27,7 +27,6 @@
 <Pane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:id="pane" prefHeight="750.0" prefWidth="668.0"
 	BorderPane.alignment="CENTER" fx:controller="uit.gon.gribouille.controleurs.DessinControleur">
 	<children>
-		<Canvas fx:id="canvas" onMouseMoved="#onMouseMoved"
-			onMouseDragged="#onMouseDragged" onMousePressed="#onMousePressed" />
+		<Canvas fx:id="canvas" onMouseMoved="#onMouseMoved" onMouseDragged="#onMouseDragged" onMousePressed="#onMousePressed" />
 	</children>
 </Pane>

@@ -1,18 +1,30 @@
 package uit.gon.gribouille.controleurs;
 
+import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.StringBinding;
+import javafx.beans.binding.When.StringConditionBuilder;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import uit.gon.gribouille.App;
 import uit.gon.gribouille.Dialogues;
 import uit.gon.gribouille.modele.Dessin;
 import uit.gon.gribouille.modele.Figure;
@@ -65,7 +77,18 @@ public class Controleur implements Initializable{
 	}
 
 	public boolean onQuitter() {
-		return Dialogues.confirmation();
+		if(!dessin.getEstModifie()) return Dialogues.confirmation();
+		Alert a = new Alert(AlertType.CONFIRMATION, "sauvegarder avant de quitter?");
+		a.setTitle("Confirmation");
+		a.getButtonTypes().clear();
+		a.getButtonTypes().add(ButtonType.CANCEL);
+		a.getButtonTypes().add(ButtonType.NO);
+		a.getButtonTypes().add(ButtonType.YES);
+		ButtonType result = a.showAndWait().get();
+		if(result == ButtonType.NO) return true;
+		if(result == ButtonType.YES)
+			return sauvegarde(dessinsController.canvas.getScene());
+		return false;
 	}
 
 	@FXML
@@ -122,6 +145,34 @@ public class Controleur implements Initializable{
 			case "8" : setEpaisseur(8); break;
 			case "9" : setEpaisseur(9); break;
 			default: return;
+		}
+	}
+	
+	public boolean sauvegarde(Scene scene) {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Sauvegarder");
+		fileChooser.setInitialFileName("sans nom");
+		
+		fileChooser.getExtensionFilters().add(new ExtensionFilter("fichier text", "*.canvas"));
+		File file = fileChooser.showSaveDialog(scene.getWindow());
+		if(file != null) {
+			dessin.sauveSous(file.getAbsolutePath());
+			dessin.setNomDuFichier(file.getName());
+			return true;
+		}
+		return false;
+	}
+	
+	public void charge(Scene scene) {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("charger");
+		fileChooser.getExtensionFilters().add(new ExtensionFilter("fichier text", "*.canvas"));
+		File file = fileChooser.showOpenDialog(scene.getWindow());
+		if(file != null) {
+			dessinsController.reinitialiseCanvas();
+			dessin.setNomDuFichier(file.getName());
+			dessin.charge(file.getAbsolutePath());
+			dessine();
 		}
 	}
 }

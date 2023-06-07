@@ -1,14 +1,14 @@
 package uit.gon.gribouille.controleurs;
 
 import java.net.URL;
-
 import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import uit.gon.gribouille.modele.Dessin;
 
 public class DessinControleur implements Initializable{
 	
@@ -23,6 +23,7 @@ public class DessinControleur implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		canvas.widthProperty().bind(pane.widthProperty());
 		canvas.heightProperty().bind(pane.heightProperty());
+		canvas.getGraphicsContext2D().setFill(Color.WHITESMOKE);
 	}
 	
 	public void efface(double x1, double y1, double x2, double y2) {
@@ -58,5 +59,11 @@ public class DessinControleur implements Initializable{
 	
 	public void setCouleur() {
 		canvas.getGraphicsContext2D().setStroke(controller.couleur.getValue());
+	}
+	
+	public void reinitialiseCanvas() {
+		controller.dessin.getFigures().clear();
+		controller.trace = null;
+		canvas.getGraphicsContext2D().fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 	}
 }
