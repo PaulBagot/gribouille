@@ -71,6 +71,11 @@ public class MenusControleur implements Initializable{
 		controller.retourArriere();
 	}
 	
+	@FXML
+	public void onExporter(ActionEvent evt) {
+		controller.exporter(controller.dessinsController.canvas.getScene());
+	}
+	
 	public void setController(Controleur controller) {
 		this.controller = controller;
 	}
