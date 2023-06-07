@@ -8,6 +8,8 @@ import java.util.ResourceBundle;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -60,6 +62,14 @@ public class Controleur implements Initializable{
 		
 		dessinsController.canvas.heightProperty().addListener(changeListener -> dessine());
 		dessinsController.canvas.widthProperty().addListener(changeListener -> dessine());
+
+		couleursController.colorPicker.valueProperty().addListener(new ChangeListener<Color>() {
+			@Override
+			public void changed(ObservableValue<? extends Color> observable, Color oldValue, Color newValue) {
+				couleur.set(newValue);
+				couleursController.reinitialiseSelectedRectangle();
+			}
+		});
 	} 
 	
 	public void dessine() {
