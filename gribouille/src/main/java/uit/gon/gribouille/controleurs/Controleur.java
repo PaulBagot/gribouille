@@ -175,4 +175,18 @@ public class Controleur implements Initializable{
 			dessine();
 		}
 	}
+	
+	public void effacer() {
+		dessin.getFigures().clear();
+		trace = null;
+		dessinsController.reinitialiseCanvas();
+	}
+	
+	public void retourArriere() {
+		if(dessin.getFigures().size() != 0)
+			dessin.getFigures().remove(dessin.getFigures().size() - 1);
+		trace = null;
+		dessinsController.reinitialiseCanvas();
+		dessine();
+	}
 }

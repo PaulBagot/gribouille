@@ -46,6 +46,12 @@
 				<RadioMenuItem fx:id="etoile" mnemonicParsing="false" text="Etoile" toggleGroup="$formeGroupe" />
 			</items>
 		</Menu>
+		<Menu mnemonicParsing="false" text="Canvas">
+			<items>
+				<MenuItem mnemonicParsing="false" onAction="#onEffacer" text="Effacer" />
+				<MenuItem mnemonicParsing="false" onAction="#onRetourArriere" text="Annuler" />
+			</items>
+		</Menu>
 		<Menu mnemonicParsing="false" text="Aide">
 			<items>
 				<MenuItem mnemonicParsing="false" text="A propos" />
