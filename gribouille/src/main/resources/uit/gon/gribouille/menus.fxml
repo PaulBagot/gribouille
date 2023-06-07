@@ -14,7 +14,7 @@
 			<items>
 				<MenuItem mnemonicParsing="false" onAction="#onCharger" text="Charger" />
 				<MenuItem mnemonicParsing="false" onAction="#onSauver" text="Sauvegarder" />
-				<MenuItem mnemonicParsing="false" text="Exporter" />
+				<MenuItem mnemonicParsing="false" onAction="#onExporter" text="Exporter" />
 				<SeparatorMenuItem mnemonicParsing="false" />
 				<MenuItem mnemonicParsing="false" onAction="#onQuitte" text="Quitter" />
 			</items>
