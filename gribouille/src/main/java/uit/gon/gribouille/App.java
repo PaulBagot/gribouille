@@ -1,7 +1,8 @@
 package uit.gon.gribouille;
 
 import javafx.application.Application;
-
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.StringBinding;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,7 +26,8 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
     	Dessin dessin = new Dessin();
-    	stage.titleProperty().bind(dessin.nomDuFichierProperty());
+    	StringBinding title = Bindings.when(dessin.estModifieProperty()).then(Bindings.concat("*").concat(dessin.nomDuFichierProperty())).otherwise(dessin.nomDuFichierProperty());
+    	stage.titleProperty().bind(title);
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("CadreGribouille.fxml"));
         scene = new Scene(fxmlLoader.load(), 640, 480);
         Controleur controleur = fxmlLoader.getController();
@@ -49,5 +51,4 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-
 }

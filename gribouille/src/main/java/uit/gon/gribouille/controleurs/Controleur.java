@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringBinding;
+import javafx.beans.binding.When.StringConditionBuilder;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -19,6 +20,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import uit.gon.gribouille.App;
 import uit.gon.gribouille.Dialogues;
 import uit.gon.gribouille.modele.Dessin;
 import uit.gon.gribouille.modele.Figure;
@@ -26,7 +28,7 @@ import uit.gon.gribouille.modele.Trace;
 
 public class Controleur implements Initializable{
 
-	public Dessin dessin = new Dessin();
+	public Dessin dessin;
 	public final SimpleDoubleProperty prevX = new SimpleDoubleProperty();
 	public final SimpleDoubleProperty prevY = new SimpleDoubleProperty();
 	public final SimpleIntegerProperty epaisseur = new SimpleIntegerProperty(1);
