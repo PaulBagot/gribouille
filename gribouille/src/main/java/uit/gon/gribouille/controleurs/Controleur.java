@@ -187,6 +187,7 @@ public class Controleur implements Initializable{
 		if(file != null) {
 			dessinsController.reinitialiseCanvas();
 			dessin.setNomDuFichier(file.getName());
+			trace = null;
 			dessin.charge(file.getAbsolutePath());
 			dessine();
 		}
