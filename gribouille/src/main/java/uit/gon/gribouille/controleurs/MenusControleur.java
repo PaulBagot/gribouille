@@ -9,6 +9,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
@@ -74,6 +76,13 @@ public class MenusControleur implements Initializable{
 	@FXML
 	public void onExporter(ActionEvent evt) {
 		controller.exporter(controller.dessinsController.canvas.getScene());
+	}
+	
+	@FXML
+	public void onAPropos() {
+		Alert alert = new Alert(AlertType.INFORMATION, "@Author Paul Bagot");
+		alert.setTitle("A Propos");
+		alert.showAndWait();
 	}
 	
 	public void setController(Controleur controller) {
