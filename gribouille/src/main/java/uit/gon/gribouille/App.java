@@ -46,6 +46,11 @@ public class App extends Application {
         stage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
         	controleur.onKeyPressed(e, e.getText());
         });
+        stage.addEventHandler(KeyEvent.KEY_RELEASED, e -> {
+        	if(e.getCode() == KeyCode.CONTROL)
+        		controleur.controlKey = false;
+        });
+        
     }
 
     public static void main(String[] args) {

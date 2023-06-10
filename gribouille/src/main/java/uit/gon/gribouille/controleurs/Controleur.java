@@ -154,15 +154,12 @@ public class Controleur implements Initializable{
 			case "7" : setEpaisseur(7); break;
 			case "8" : setEpaisseur(8); break;
 			case "9" : setEpaisseur(9); break;
+			case "z" : { if(controlKey) retourArriere(); break;}
 			default: break;
 		}
-		if(key.equals("z")) {
-			if(controlKey)
-				retourArriere();
-		} else
-			controlKey = false;
 		if(keyEvent.getCode() == KeyCode.CONTROL)
 			controlKey = true;
+
 	}
 	
 	public boolean sauvegarde(Scene scene) {
