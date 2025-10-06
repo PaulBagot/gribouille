@@ -1,4 +1,6 @@
-## A Drawing App I Built During My Studies
+# gribouille
+
+A Drawing App I Built During My Studies
 
 ### Language
 
